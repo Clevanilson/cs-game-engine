@@ -26,3 +26,8 @@ function Vector:subtract(other)
     self._x = self._x - other:getX()
     self._y = self._y - other:getY()
 end
+
+function Vector:scale(factor)
+    self._x = self._x * factor
+    self._y = self._y * factor
+end
