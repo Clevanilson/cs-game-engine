@@ -21,8 +21,3 @@ function SceneManager:update(dt)
     if not self.currentScene then return end
     self.currentScene:update(dt)
 end
-
-function SceneManager:render()
-    if not self.currentScene then return end
-    self.currentScene:render()
-end

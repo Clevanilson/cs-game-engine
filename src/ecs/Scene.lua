@@ -14,8 +14,5 @@ end
 function Scene:update(dt)
 end
 
-function Scene:render()
-end
-
 function Scene:destroy()
 end
