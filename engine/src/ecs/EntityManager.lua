@@ -67,13 +67,8 @@ function EntityManager:removeSystem(system)
     self._systems[systemID] = nil
 end
 
-function EntityManager:update(dt)
+function EntityManager:update()
     self:_addEntitiesFromQueue()
-    self:_updateSystems(dt)
-end
-
-function EntityManager:render()
-    self:_renderSystems()
 end
 
 function EntityManager:_addEntitiesFromQueue()
@@ -92,18 +87,6 @@ function EntityManager:_addEntityToSystem(entity)
     end
 
     self._addedEntitiesQueue = {}
-end
-
-function EntityManager:_updateSystems(dt)
-    for _key, system in pairs(self._systems) do
-        system:update(dt)
-    end
-end
-
-function EntityManager:_renderSystems()
-    for _key, system in pairs(self._systems) do
-        system:render()
-    end
 end
 
 return EntityManager
