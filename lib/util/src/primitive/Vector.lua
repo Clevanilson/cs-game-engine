@@ -43,4 +43,8 @@ function Vector:scale(args)
     self._y = self._y * factor
 end
 
+function Vector:clone()
+    return Vector.new { x = self:getX(), y = self:getY() }
+end
+
 return Vector

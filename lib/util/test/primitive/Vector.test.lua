@@ -31,4 +31,12 @@ testing.describe('Vector', function ()
         testing.expect(sut:getX()).toBe(10)
         testing.expect(sut:getY()).toBe(20)
     end)
+
+    testing.test('clone', function ()
+        local sut = Sut.new { x = 1, y = 2 }
+        local clone = sut:clone()
+        testing.expect(sut == clone).toBe(false)
+        testing.expect(sut:getX()).toBe(clone:getX())
+        testing.expect(sut:getY()).toBe(clone:getY())
+    end)   
 end)
