@@ -29,6 +29,7 @@ function SceneManager:update(dt)
     local systems = self.currentScene:getSystems()
     systems.movement:update(dt)
     systems.keyboardControl:update(dt)
+    systems.script:update(dt)
     systems.cameraMovement:update(dt, self._camera)
 end
 
