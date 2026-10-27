@@ -14,8 +14,8 @@ Vector.__index = Vector
 ---@return Vector
 function Vector.new(args)
     local self = {
-        _x = args.x,
-        _y = args.y,
+        _x = args.x or 0,
+        _y = args.y or 0,
         _minX = nil,
         _maxX = nil,
         _minY = nil,
