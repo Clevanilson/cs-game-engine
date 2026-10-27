@@ -1,6 +1,5 @@
-local util = require 'util.index'
+local testing = require 'lib.testing.index'
 local engine = require 'engine.index'
-local testing = util.testing
 local Entity = engine.Entity
 
 testing.describe('Entity', function ()

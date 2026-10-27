@@ -8,6 +8,7 @@ function Game.new()
         _sceneManager = SceneManager.new(),
     }
     love.load = function ()
+        love.graphics.setDefaultFilter("nearest", "nearest")
         self:load()
     end
     love.draw = function ()

@@ -1,3 +1,3 @@
 return {
-    Window = require 'engine.src.util.Window'
+    Camera = require 'engine.src.util.Camera'
 }

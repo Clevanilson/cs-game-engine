@@ -1,6 +1,6 @@
-local util = require 'util.index'
+local testing = require 'lib.testing.index'
+local util = require 'lib.util.index'
 local engine = require 'engine.index'
-local testing = util.testing
 local Bitset = util.Bitset
 local System = engine.System
 local TransformComponent = engine.TransformComponent

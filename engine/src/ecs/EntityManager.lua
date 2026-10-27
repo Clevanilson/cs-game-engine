@@ -1,9 +1,14 @@
-local util = require 'util.index'
+local util = require 'lib.util.index'
 local Entity = require 'engine.src.ecs.Entity'
 local Pool = util.Pool
 local Bitset = util.Bitset
 
-
+---@class EntityManager
+---@field _entityAmount number
+---@field _addedEntitiesQueue table<number, Entity>
+---@field _componentPools Pool
+---@field _entitySignatures table<number, Bitset>
+---@field _systems table<number, System>
 local EntityManager = {}
 EntityManager.__index = EntityManager
 

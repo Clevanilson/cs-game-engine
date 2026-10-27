@@ -1,9 +1,8 @@
-local util = require 'util.index'
-local Vector = util.Vector
 local System = require 'engine.src.ecs.System'
 local TransformComponent = require 'engine.src.component.TransformComponent'
 local TextComponent = require 'engine.src.component.TextComponent'
 
+---@class RenderTextSystem : System
 local RenderTextSystem = setmetatable({}, System)
 RenderTextSystem.__index = RenderTextSystem
 

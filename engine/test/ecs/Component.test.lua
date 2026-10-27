@@ -1,11 +1,11 @@
-local util = require 'util.index'
+local testing = require 'lib.testing.index'
+local util = require 'lib.util.index'
 local engine = require 'engine.index'
-local testing = util.testing
 local Component = engine.Component
 
 testing.describe('Component', function ()
     testing.test('getID', function ()
-        local sut = setmetatable({ id = 9 }, Component)
+        local sut = setmetatable({ _id = 9 }, Component)
         testing.expect(sut:getID()).toBe(9)
     end)
 

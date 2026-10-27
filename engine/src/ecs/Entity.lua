@@ -1,6 +1,13 @@
+---@class Entity
+---@field _id number
+---@field _entityManager EntityManager
 local Entity = {}
 Entity.__index = Entity
 
+---@param args {
+---id: number,
+---entityManager: EntityManager,
+---}
 function Entity.new(args)
     local self = {
         _id = args.id,
@@ -22,6 +29,9 @@ function Entity:addComponent(args)
     self._entityManager:addComponent(self, component)
 end
 
+---@generic TComponent
+---@param args { ComponentClass: TComponent }
+---@return TComponent
 function Entity:getComponent(args)
     local ComponentClass = args.ComponentClass
     return self._entityManager:getComponent(self, ComponentClass)
