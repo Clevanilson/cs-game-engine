@@ -34,9 +34,21 @@ end
 
 function SceneManager:render()
     if not self.currentScene then return end
+    local canvas = love.graphics.newCanvas(self._camera:getWidth(), self._camera:getHeight())
+    love.graphics.setCanvas(canvas)
     local systems = self.currentScene:getSystems()
     systems.renderText:render(self._camera)
     systems.renderSprite:render(self._camera)
+    love.graphics.setCanvas()
+    local window_width = love.graphics:getWidth()
+    local window_height = love.graphics:getHeight()
+    love.graphics.draw(
+        canvas,
+        0, 0,
+        0,
+        window_width / self._camera:getWidth(),
+        window_height / self._camera:getHeight()
+    )
 end
 
 return SceneManager

@@ -12,15 +12,20 @@ Camera.__index = Camera
 function Camera.new()
     local self = {
         _position = Vector.new { x = 0, y = 0 },
-        _width = 500,
-        _height = 500 ,
-        _zoom = 3
+        _width = 360,
+        _height = 240,
+        _zoom = 1
     }
     return setmetatable(self, Camera)
 end
 
 function Camera:getPosition()
     return self._position
+end
+
+---@param args { position: Vector }
+function Camera:setPosition(args)
+    self._position = args.position
 end
 
 function Camera:getWidth()

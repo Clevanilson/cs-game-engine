@@ -13,16 +13,16 @@ SpriteComponent.__index = SpriteComponent
 ---@param args {
 ---path: string,
 ---position: Vector,
----width: number,
----height: number,
+---width: number | nil,
+---height: number | nil,
 ---scale: Vector,
 ---}
 function SpriteComponent.new(args)
     local self = setmetatable({
         _path = args.path,
         _position = args.position or Vector.new { x = 0, y = 0},
-        _width = args.width or 16,
-        _height = args.height or 16,
+        _width = args.width,
+        _height = args.height,
         _scale = args.scale or Vector.new { x = 1, y = 1 }
     }, Component.new())
     return setmetatable(self, SpriteComponent)

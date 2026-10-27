@@ -1,6 +1,7 @@
 local CameraFollowComponent = require 'engine.src.component.CameraFollowComponent'
 local TransformComponent = require 'engine.src.component.TransformComponent'
 local System = require 'engine.src.ecs.System'
+local util = require 'lib.util.index'
 
 ---@class CameraMovementSystem : System
 local CameraMovementSystem = setmetatable({}, System)
@@ -13,6 +14,8 @@ function CameraMovementSystem.new()
     return setmetatable(self, CameraMovementSystem)
 end
 
+---@param dt number
+---@param camera Camera
 function CameraMovementSystem:update(dt, camera)
     local cameraFollow = self:getEntities()[1]
 
@@ -20,9 +23,17 @@ function CameraMovementSystem:update(dt, camera)
         return
     end
 
+    ---@type TransformComponent
     local transform = cameraFollow:getComponent { ComponentClass = TransformComponent }
-    -- camera:getPosition()._x = lcam
-    -- camera:getPosition()._y = 370
+    local cameraPosition = transform:getPosition():clone() 
+    cameraPosition:limit { min = 0 }
+    local cameraPositionOffset = util.Vector.new { 
+        x = (camera:getWidth() / 2), 
+        y = camera:getHeight() / 2 
+    }
+    cameraPosition:subtract { other = cameraPositionOffset }
+    camera:setPosition { position = cameraPosition }
+
 end
 
 

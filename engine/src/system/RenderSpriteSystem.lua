@@ -28,7 +28,7 @@ function RenderSpriteSystem.new()
     return setmetatable(self, RenderSpriteSystem)
 end
 
-
+---@param camera Camera
 function RenderSpriteSystem:render(camera)
     for _key, entity in pairs(self:getEntities()) do
         ---@type TransformComponent
@@ -40,15 +40,15 @@ function RenderSpriteSystem:render(camera)
         local quad = love.graphics.newQuad(
             cSprite:getPosition():getX(),
             cSprite:getPosition():getY(),
-            cSprite:getWidth(), 
-            cSprite:getHeight(),
+            cSprite:getWidth() or sprite:getWidth(), 
+            cSprite:getHeight() or sprite:getHeight(),
             sprite:getDimensions()
         )
         love.graphics.draw(
             sprite,
             quad, 
-            cTransform:getPosition():getX(), 
-            cTransform:getPosition():getY(), 
+            cTransform:getPosition():getX() - camera:getPosition():getX(), 
+            cTransform:getPosition():getY() - camera:getPosition():getY(), 
             0, 
             camera:getZoom(), 
             camera:getZoom()
