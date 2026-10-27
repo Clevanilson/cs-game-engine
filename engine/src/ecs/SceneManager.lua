@@ -1,5 +1,8 @@
 local engineUtil = require 'engine.src.util.index'
 
+---@class SceneManager
+---@field currentScene Scene
+---@field _camera Camera
 local SceneManager = {}
 SceneManager.__index = SceneManager
 
@@ -12,7 +15,7 @@ function SceneManager.new()
 end
 
 function SceneManager:set(newScene)
-    if self.currentScene then 
+    if self.currentScene then
         self.currentScene:destroy()
     end
 
@@ -25,6 +28,7 @@ function SceneManager:update(dt)
     self.currentScene:getEntityManager():update()
     local systems = self.currentScene:getSystems()
     systems.movement:update(dt)
+    systems.keyboardControl:update(dt)
     systems.cameraMovement:update(dt, self._camera)
 end
 

@@ -5,6 +5,7 @@ local Component = require 'engine.src.ecs.Component'
 local RigidBodyComponent = setmetatable({ _id = Component.getNextID() }, Component)
 RigidBodyComponent.__index = RigidBodyComponent
 
+---@param args { velocity: Vector }
 function RigidBodyComponent.new(args)
     local self = setmetatable({
         _velocity = args.velocity

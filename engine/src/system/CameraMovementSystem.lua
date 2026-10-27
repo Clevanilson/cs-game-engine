@@ -20,8 +20,7 @@ function CameraMovementSystem:update(dt, camera)
         return
     end
 
-    local transform = cameraFollow:getComponent { ComponentClass = Component.Transform }
-    print(transform)
+    local transform = cameraFollow:getComponent { ComponentClass = TransformComponent }
     -- camera:getPosition()._x = lcam
     -- camera:getPosition()._y = 370
 end

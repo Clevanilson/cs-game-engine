@@ -5,6 +5,7 @@ return {
     SpriteComponent = require 'engine.src.component.SpriteComponent',
     TextComponent = require 'engine.src.component.TextComponent',
     TransformComponent = require 'engine.src.component.TransformComponent',
+    KeyboardControlComponent = require 'engine.src.component.KeyboardControlComponent',
     --- ECS
     Component = require 'engine.src.ecs.Component',
     Entity = require 'engine.src.ecs.Entity',

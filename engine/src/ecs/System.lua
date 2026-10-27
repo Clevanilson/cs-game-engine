@@ -62,11 +62,13 @@ function System:isIntrested(args)
     return self._signature:equals { other = bitwise }
 end
 
+---@param dt number
 function System:update(dt)
     return nil
 end
 
-function System:render()
+---@param camera Camera
+function System:render(camera)
     return nil
 end
 

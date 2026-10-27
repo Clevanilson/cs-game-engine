@@ -3,7 +3,7 @@ local MovementSystem = require 'engine.src.system.MovementSystem'
 local RenderSpriteSystem = require 'engine.src.system.RenderSpriteSystem'
 local RenderTextSystem = require 'engine.src.system.RenderTextSystem'
 local CameraMovementSystem = require 'engine.src.system.CameraMovementSystem'
-
+local KeyboardControlSystem = require 'engine.src.system.KeyboardControlSystem'
 
 ---@class Scene
 ---@field _entityManager EntityManager
@@ -12,6 +12,7 @@ local CameraMovementSystem = require 'engine.src.system.CameraMovementSystem'
 ---renderSprite: RenderSpriteSystem,
 ---renderText: RenderTextSystem,
 ---cameraMovement: CameraMovementSystem,
+---keyboardControl: KeyboardControlSystem,
 ---}
 local Scene = {}
 Scene.__index = Scene
@@ -23,12 +24,15 @@ function Scene.new()
             movement = MovementSystem.new(),
             renderSprite = RenderSpriteSystem.new(),
             renderText = RenderTextSystem.new(),
-            cameraMovement = CameraMovementSystem.new()
+            cameraMovement = CameraMovementSystem.new(),
+            keyboardControl = KeyboardControlSystem.new()
         }
     }
     self._entityManager:addSystem(self._systems.movement)
     self._entityManager:addSystem(self._systems.renderSprite)
     self._entityManager:addSystem(self._systems.renderText)
+    self._entityManager:addSystem(self._systems.cameraMovement)
+    self._entityManager:addSystem(self._systems.keyboardControl)
     return setmetatable(self, Scene)
 end
 
