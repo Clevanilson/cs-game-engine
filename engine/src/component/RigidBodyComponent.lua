@@ -1,12 +1,14 @@
 local Component = require 'engine.src.ecs.Component'
 
-local RigidBodyComponent = setmetatable({ id = Component.getNextID() }, Component)
+---@class RigidBodyComponent : Component
+---@field _velocity Vector
+local RigidBodyComponent = setmetatable({ _id = Component.getNextID() }, Component)
 RigidBodyComponent.__index = RigidBodyComponent
 
 function RigidBodyComponent.new(args)
-    local self = {
+    local self = setmetatable({
         _velocity = args.velocity
-    }
+    }, Component.new())
     return setmetatable(self, RigidBodyComponent)
 end
 

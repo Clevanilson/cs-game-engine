@@ -1,12 +1,15 @@
 local Component = require 'engine.src.ecs.Component'
 
-local TextComponent = setmetatable({ id = Component.getNextID() }, Component)
+---@class TextComponent : Component
+---@field _text string
+local TextComponent = setmetatable({ _id = Component.getNextID() }, Component)
 TextComponent.__index = TextComponent
 
+---@return TextComponent
 function TextComponent.new(args)
-    local self = {
+    local self = setmetatable({
         _text = args.text
-    }
+    }, Component.new())
     return setmetatable(self, TextComponent)
 end
 

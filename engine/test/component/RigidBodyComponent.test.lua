@@ -1,14 +1,14 @@
-local util = require 'util.index'
+local util = require 'lib.util.index'
 local engine = require 'engine.index'
-local testing = util.testing
+local testing = require 'lib.testing.index'
 local Vector = util.Vector
-local RigidBodyComponent = engine.RigidBodyComponent
+local Sut = engine.RigidBodyComponent
 
 testing.describe('RigidBodyComponent', function ()
     testing.test('new', function ()
         local velocity = Vector.new { x = 200, y = 10 }
-        local sut = RigidBodyComponent.new { velocity = velocity }
+        local sut = Sut.new { velocity = velocity }
         testing.expect(sut:getVelocity()).toBe(velocity)
-        testing.expect(sut:getID()).toBe(RigidBodyComponent:getID())
+        testing.expect(sut:getID()).toBe(Sut:getID())
     end)
 end)
