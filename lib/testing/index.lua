@@ -1,4 +1,15 @@
+---@alias ExpectReturn {
+--- toBe: fun(value: any)
+---}
+---
+---@alias TestingModule {
+--- describe: fun(message: string, callback: function),
+--- test: fun(message: string, callback: function),
+--- expect: fun(value: any): ExpectReturn,
+---}
 
+
+---@type TestingModule
 return {
     describe = function (message, callback)
         print(message)

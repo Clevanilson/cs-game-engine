@@ -8,7 +8,7 @@ Bitset.__index = Bitset
 function Bitset.new(args)
     local self = {
         _value = {},
-        _size = args.size or 32
+        _size = args.size or 10
     }
 
     for i = 1, self._size, 1 do
