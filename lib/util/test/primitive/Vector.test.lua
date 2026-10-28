@@ -52,4 +52,18 @@ testing.describe('Vector', function ()
         testing.expect(sut:getX()).toBe(3)
         testing.expect(sut:getY()).toBe(3)
     end)
+
+    testing.test('setX', function ()
+        local sut = Sut.new { x = 0, y = 0}
+        sut:setX(1)
+        testing.expect(sut:getX()).toBe(1)
+        testing.expect(sut:getY()).toBe(0)
+    end)
+
+    testing.test('setY', function ()
+        local sut = Sut.new { x = 0, y = 0}
+        sut:setY(1)
+        testing.expect(sut:getX()).toBe(0)
+        testing.expect(sut:getY()).toBe(1)
+    end)
 end)

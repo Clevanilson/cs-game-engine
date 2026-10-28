@@ -10,7 +10,8 @@ Vector.__index = Vector
 
 ---@alias LimitArgs { min: number | nil, max: number | nil }
 
----@param args { x: number, y: number }
+---@alias VectorArgs { x: number, y: number }
+---@param args VectorArgs
 ---@return Vector
 function Vector.new(args)
     local self = {
@@ -97,9 +98,20 @@ function Vector:limitY(args)
     end
 end
 
-
 function Vector:clone()
     return Vector.new { x = self:getX(), y = self:getY() }
+end
+
+---@param x number
+function Vector:setX(x)
+    self._x = x
+    self:_updateLimits()
+end
+
+---@param y number
+function Vector:setY(y)
+    self._y = y
+    self:_updateLimits()
 end
 
 return Vector
