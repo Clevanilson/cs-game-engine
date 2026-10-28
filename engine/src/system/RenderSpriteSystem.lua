@@ -32,10 +32,10 @@ end
 function RenderSpriteSystem:render(camera)
     for _key, entity in pairs(self:getEntities()) do
         ---@type TransformComponent
-        local cTransform = entity:getComponent { ComponentClass = TransformComponent }
+        local cTransform = entity:getComponent(TransformComponent)
         ---@type SpriteComponent
-        local cSprite = entity:getComponent { ComponentClass = SpriteComponent }
-        local spriteData = entity:getComponent { ComponentClass = SpriteComponent }
+        local cSprite = entity:getComponent(SpriteComponent)
+        local spriteData = entity:getComponent(SpriteComponent)
         local sprite = store:get{ path = spriteData:getPath() }
         local quad = love.graphics.newQuad(
             cSprite:getPosition():getX(),

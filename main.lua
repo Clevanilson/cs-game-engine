@@ -1,8 +1,8 @@
 local engine = require 'engine.index'
-local TestGame = require 'TestGame.index'
+local testScene = require 'TestGame.scene.TestScene'
 
 local game = engine.Game.new()
 
 function game:load() 
-    self:getSceneManager():set(TestGame.TestScene.new())
+    game:loadScene(testScene)
 end

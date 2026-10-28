@@ -1,5 +1,6 @@
 local System = require 'engine.src.ecs.System'
 local ScriptComponent = require 'engine.src.component.ScriptComponent'
+local TransformComponent = require 'engine.src.component.TransformComponent'
 
 ---@class ScriptSystem : System
 local ScriptSystem = setmetatable({}, System)
@@ -24,8 +25,26 @@ end
 function ScriptSystem:update(dt)
     for _key, entity in pairs(self:getEntities()) do
         ---@type ScriptComponent
-        local script = entity:getComponent { ComponentClass = ScriptComponent }
-        script.callback({ dt = dt, keys = keys, entity = entity })
+        local script = entity:getComponent(ScriptComponent)
+        script.callback({ 
+            dt = dt,
+            keys = keys,
+            entity = entity,
+            setPosition = function (x, y)
+                ---@type TransformComponent
+                local transform = entity:getComponent(TransformComponent)
+                local position = transform:getPosition()
+                position:setX(x)
+                position:setY(y)
+            end,
+            getPosition = function ()
+                ---@type TransformComponent
+                local transform = entity:getComponent(TransformComponent)
+                local position = transform:getPosition()
+                return position:getX(), position:getY()
+            end
+
+        })
     end
 end
 

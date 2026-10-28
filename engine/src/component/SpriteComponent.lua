@@ -10,20 +10,22 @@ local Vector = require 'lib.util.index'.Vector
 local SpriteComponent = setmetatable({ _id = Component.getNextID() }, Component)
 SpriteComponent.__index = SpriteComponent
 
----@param args {
+---@alias SpriteComponentArgs {
 ---path: string,
----position: Vector,
+---position: VectorArgs | nil,
 ---width: number | nil,
 ---height: number | nil,
----scale: Vector,
+---scale: VectorArgs | nil,
 ---}
+
+---@param args SpriteComponentArgs
 function SpriteComponent.new(args)
     local self = setmetatable({
         _path = args.path,
-        _position = args.position or Vector.new { x = 0, y = 0},
+        _position = Vector.new(args.position or { x = 0, y = 0}),
         _width = args.width,
         _height = args.height,
-        _scale = args.scale or Vector.new { x = 1, y = 1 }
+        _scale = Vector.new(args.scale or { x = 1, y = 1 })
     }, Component.new())
     return setmetatable(self, SpriteComponent)
 end

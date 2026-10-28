@@ -1,6 +1,5 @@
 local testing = require 'lib.testing.index'
-local engine = require 'engine.index'
-local Entity = engine.Entity
+local Entity = require 'engine.src.ecs.Entity'
 
 testing.describe('Entity', function ()
     testing.test('new', function ()
@@ -46,6 +45,6 @@ testing.describe('Entity', function ()
             end
         }
         local sut = Entity.new { id = 1, entityManager = entityManager }
-        testing.expect(sut:getComponent { ComponentClass = ComponentClass }).toBe(component)
+        testing.expect(sut:getComponent(ComponentClass)).toBe(component)
     end)
 end)

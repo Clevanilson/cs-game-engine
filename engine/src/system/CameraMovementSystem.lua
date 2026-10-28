@@ -24,7 +24,7 @@ function CameraMovementSystem:update(dt, camera)
     end
 
     ---@type TransformComponent
-    local transform = cameraFollow:getComponent { ComponentClass = TransformComponent }
+    local transform = cameraFollow:getComponent(TransformComponent)
     local cameraPosition = transform:getPosition():clone() 
     cameraPosition:limit { min = 0 }
     local cameraPositionOffset = util.Vector.new { 

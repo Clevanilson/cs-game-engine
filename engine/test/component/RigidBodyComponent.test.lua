@@ -1,8 +1,7 @@
 local util = require 'lib.util.index'
-local engine = require 'engine.index'
 local testing = require 'lib.testing.index'
 local Vector = util.Vector
-local Sut = engine.RigidBodyComponent
+local Sut = require 'engine.src.component.RigidBodyComponent'
 
 testing.describe('RigidBodyComponent', function ()
     testing.test('new', function ()

@@ -1,9 +1,8 @@
 local testing = require 'lib.testing.index'
 local util = require 'lib.util.index'
-local engine = require 'engine.index'
 local Bitset = util.Bitset
-local System = engine.System
-local TransformComponent = engine.TransformComponent
+local System = require 'engine.src.ecs.System'
+local TransformComponent = require 'engine.src.component.TransformComponent'
 
 testing.describe('System', function ()
     testing.test('new', function ()

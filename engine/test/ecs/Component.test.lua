@@ -1,7 +1,5 @@
 local testing = require 'lib.testing.index'
-local util = require 'lib.util.index'
-local engine = require 'engine.index'
-local Component = engine.Component
+local Component = require 'engine.src.ecs.Component'
 
 testing.describe('Component', function ()
     testing.test('getID', function ()

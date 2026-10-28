@@ -24,16 +24,14 @@ function Entity:getSignature()
     return self._entityManager:getEntitySignature(self)
 end
 
-function Entity:addComponent(args)
-    local component = args.component
+---@param component Component
+function Entity:addComponent(component)
     self._entityManager:addComponent(self, component)
 end
 
----@generic TComponent
----@param args { ComponentClass: TComponent }
----@return TComponent
-function Entity:getComponent(args)
-    local ComponentClass = args.ComponentClass
+---@param ComponentClass Component
+---@return Component
+function Entity:getComponent(ComponentClass)
     return self._entityManager:getComponent(self, ComponentClass)
 end
 
