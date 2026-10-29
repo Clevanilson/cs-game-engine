@@ -3,24 +3,29 @@ local RenderSpriteSystem = require 'engine.src.system.RenderSpriteSystem'
 local CameraMovementSystem = require 'engine.src.system.CameraMovementSystem'
 local ScriptSystem = require 'engine.src.system.ScriptSystem'
 
----@alias SceneData {
----     entities: table<number, {
----         components: {
----             TransformComponent: TransformComponentArgs | nil,
----             SpriteComponent: SpriteComponentArgs | nil,
----             ScriptComponent: ScriptComponentArgs | nil,
----             CameraFollowComponent: {} | nil,
----         },
----     }>,
----}
+---@class GameObjectComponents {
+---@field TransformComponent TransformComponentArgs?
+---@field SpriteComponent SpriteComponentArgs?
+---@field ScriptComponent ScriptComponentArgs?
+---@field CameraFollowComponent {}?
+
+---@class GameObject {
+---@field components GameObjectComponents
+
+---@class SceneData {
+---@field entities table<string, GameObject>
+---@field ui table<string, UIElementData>?
+
+
+
+---@class SceneSystems
+---@field renderSprite RenderSpriteSystem
+---@field cameraMovement CameraMovementSystem
+---@field script ScriptSystem
 
 ---@class Scene
----@field _entityManager EntityManager
----@field _systems {
----renderSprite: RenderSpriteSystem,
----cameraMovement: CameraMovementSystem,
----script: ScriptSystem,
----}
+---@field private _entityManager EntityManager
+---@field private _systems SceneSystems
 local Scene = {}
 Scene.__index = Scene
 
@@ -41,12 +46,6 @@ end
 
 function Scene:getSystems()
     return self._systems
-end
-
-function Scene:init()
-end
-
-function Scene:destroy()
 end
 
 function Scene:getEntityManager()

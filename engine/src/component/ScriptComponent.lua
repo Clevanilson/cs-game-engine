@@ -1,12 +1,13 @@
 local Component = require 'engine.src.ecs.Component'
 
----@alias ScriptCallback fun(args: { 
---- dt: number,
---- keys: table<string, boolean | nil>,
---- entity: Entity,
---- setPosition: fun(x, y),
---- getPosition: fun(): number, number,
---- })
+---@class ScriptCallbackArgs
+---@field dt number
+---@field keys table<string, boolean | nil>
+---@field getPosition fun(): number, number
+---@field setPosition fun(x: number, y: number) 
+
+---@alias ScriptCallback fun(args: ScriptCallbackArgs)
+
 ---@class ScriptComponent : Component
 ---@field callback ScriptCallback
 local ScriptComponent = setmetatable({ _id = Component.getNextID() }, Component)
