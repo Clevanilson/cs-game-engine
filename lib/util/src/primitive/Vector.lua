@@ -1,10 +1,10 @@
 ---@class Vector
----@field _x number
----@field _y number
----@field _minX number | nil
----@field _maxX number | nil
----@field _minY number | nil
----@field _maxY number | nil
+---@field private _x number
+---@field private _y number
+---@field private _minX number | nil
+---@field private _maxX number | nil
+---@field private _minY number | nil
+---@field private _maxY number | nil
 local Vector = {}
 Vector.__index = Vector
 
@@ -112,6 +112,11 @@ end
 function Vector:setY(y)
     self._y = y
     self:_updateLimits()
+end
+
+---@param other Vector 
+function Vector:equals(other)
+    return other:getX() == self._x and other:getY() == self._y
 end
 
 return Vector

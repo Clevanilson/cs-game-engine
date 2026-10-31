@@ -66,4 +66,10 @@ testing.describe('Vector', function ()
         testing.expect(sut:getX()).toBe(0)
         testing.expect(sut:getY()).toBe(1)
     end)
+
+    testing.test('equals', function ()
+        local sut = Sut.new { x = 0, y = 0}
+        local other = Sut.new { x = 0, y = 0}
+        testing.expect(sut:equals(other)).toBe(true)
+    end)
 end)
